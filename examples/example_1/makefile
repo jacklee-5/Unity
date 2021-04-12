@@ -47,16 +47,16 @@ TARGET_BASE1=test1
 TARGET_BASE2=test2
 TARGET1 = $(TARGET_BASE1)$(TARGET_EXTENSION)
 TARGET2 = $(TARGET_BASE2)$(TARGET_EXTENSION)
-SRC_FILES1=$(UNITY_ROOT)/src/unity.c src/ProductionCode.c  test/TestProductionCode.c  test/test_runners/TestProductionCode_Runner.c
-SRC_FILES2=$(UNITY_ROOT)/src/unity.c src/ProductionCode2.c test/TestProductionCode2.c test/test_runners/TestProductionCode2_Runner.c
+SRC_FILES1=src/ProductionCode.c  test/TestProductionCode.c  test/test_runners/TestProductionCode_Runner.c
+SRC_FILES2=src/ProductionCode2.c test/TestProductionCode2.c test/test_runners/TestProductionCode2_Runner.c
 INC_DIRS=-Isrc -I$(UNITY_ROOT)/src
 SYMBOLS=
 
 all: clean default
 
 default: $(SRC_FILES1) $(SRC_FILES2)
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -o $(TARGET1)
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES2) -o $(TARGET2)
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -L$(UNITY_ROOT) -lunity -o $(TARGET1)
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES2) -L$(UNITY_ROOT) -lunity -o $(TARGET2)
 	- ./$(TARGET1)
 	- ./$(TARGET2)
 

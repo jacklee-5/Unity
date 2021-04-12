@@ -42,8 +42,8 @@ project(unity
 )
 
 # Options to Build With Extras -------------------------------------------------
-option(UNITY_EXTENSION_FIXTURE "Compiles Unity with the \"fixture\" extension." OFF)
-option(UNITY_EXTENSION_MEMORY "Compiles Unity with the \"memory\" extension." OFF)
+option(UNITY_EXTENSION_FIXTURE "Compiles Unity with the \"fixture\" extension." ON)
+option(UNITY_EXTENSION_MEMORY "Compiles Unity with the \"memory\" extension." ON)
 
 set(UNITY_EXTENSION_FIXTURE_ENABLED $<BOOL:${UNITY_EXTENSION_FIXTURE}>)
 set(UNITY_EXTENSION_MEMORY_ENABLED $<OR:${UNITY_EXTENSION_FIXTURE_ENABLED},$<BOOL:${UNITY_EXTENSION_MEMORY}>>)

@@ -45,9 +45,11 @@ CFLAGS += -Wold-style-definition
 
 TARGET_BASE1=all_tests
 TARGET1 = $(TARGET_BASE1)$(TARGET_EXTENSION)
-SRC_FILES1=\
+#SRC_FILES1=\
   $(UNITY_ROOT)/src/unity.c \
-  $(UNITY_ROOT)/extras/fixture/src/unity_fixture.c \
+  $(UNITY_ROOT)/extras/fixture/src/unity_fixture.c 
+
+SRC_FILES1=\
   src/ProductionCode.c \
   src/ProductionCode2.c \
   test/TestProductionCode.c \
@@ -61,7 +63,7 @@ SYMBOLS=-DUNITY_FIXTURE_NO_EXTRAS
 all: clean default
 
 default:
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -o $(TARGET1)
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -L../..  -lunity -o $(TARGET1)
 	- ./$(TARGET1) -v
 
 clean:
